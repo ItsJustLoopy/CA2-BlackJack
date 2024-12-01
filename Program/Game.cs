@@ -8,7 +8,7 @@ public class Game
 
     public bool gameOver = false;
 
-    public Game()
+    public Game() // Constructor to create a new game
     {
         _deck = new Deck();
         _player = new Player();
@@ -23,17 +23,15 @@ public class Game
         
         _deck.Shuffle();
         
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++) // Draws 2 cards for the player and dealer from the deck
         {
             _player.DrawCard(ref _deck);
             _dealer.DrawCard(ref _deck);
         }
         
         _player.ShowHand();
-        _dealer.ShowHand(true);
+        _dealer.ShowHand(true); // Shows the dealer's first card and hides a secret hole card
         PlayerTurn();
-        
-
     }
     
     private void PlayerTurn()
@@ -50,14 +48,13 @@ public class Game
             {
                 _player.DrawCard(ref _deck);
                 _player.ShowHand();
-                PlayerTurn();
+                PlayerTurn(); // Recursively calls PlayerTurn() until the player decides to stop drawing cards
                 
             }
             else if (response == "n")
             {
                 break;
             }
-            
             
         }
 
@@ -66,8 +63,6 @@ public class Game
     
     private void DealerTurn()
     {
-       
-        
         if (!_dealer.IsBusted && !gameOver)
         {
             _dealer.ShouldDrawCard(ref _deck);
@@ -76,7 +71,7 @@ public class Game
         }
     }
     
-    private void DetermineWinner()
+    private void DetermineWinner() // Determines the winner of the game
     {
         if (_player.IsBusted)
         {
@@ -115,13 +110,14 @@ public class Game
         
         Program.CenterText("\n");
         Program.CenterText("Would you like to play again? (y/n): ");
-        if (Console.ReadLine().ToLower() == "y")
+        
+        if (Console.ReadLine().ToLower() == "y") // Starts a new game if the player wants to play again
         {
             Program.NewGame();
         }
         else
         {
-            gameOver = true;
+            gameOver = true; // Ends the game if the player doesn't want to play again
         }
         
         

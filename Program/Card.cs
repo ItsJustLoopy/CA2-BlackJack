@@ -5,13 +5,13 @@ public class Card
     public string Suit { get;}
     public string Rank { get;}
     
-    public Card(string suit, string rank)
+    public Card(string suit, string rank) // Constructor to create a card object
     {
         Suit = suit;
         Rank = rank;
     }
     
-    public int GetValue()
+    public int GetValue() // Method to get the value of a card
     {
         if (Rank == "A")
         {
@@ -28,7 +28,7 @@ public class Card
 
     }
     
-    public override string ToString()
+    public override string ToString() // Method to return the card name as a string
     {
         return $"{Rank} of {Suit}";
     }

@@ -9,7 +9,7 @@ class Program
         string response = Console.ReadLine().ToLower();
         CenterText("\n");
         
-        if (response == "y")
+        if (response == "y") // Start game if user enters "y"
         {
             Game game = new Game();
             game.Start();
@@ -48,13 +48,13 @@ class Program
         
     }
     
-    public static void NewGame()
+    public static void NewGame() // Method to start a new game
     {
         Game game = new Game();
         game.Start();
     }
     
-    public static void CenterText(string text)
+    public static void CenterText(string text) // Method to center text in the console
     {
         int screenWidth = Console.WindowWidth;
         int stringWidth = text.Length;
